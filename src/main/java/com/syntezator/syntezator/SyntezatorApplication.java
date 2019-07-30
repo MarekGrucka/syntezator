@@ -66,9 +66,7 @@ public class SyntezatorApplication {
 
 		try {Thread.sleep(500);}
 		catch (InterruptedException e)
-		{
-			System.out.println("Error");
-		}
+		{System.out.println("Error");}
 
 		System.out.println("Wybierz z listy numer udrządzenia midi");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
