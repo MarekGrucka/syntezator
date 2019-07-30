@@ -28,12 +28,24 @@ public class SyntezatorApplication {
 			oscillator3.noteOff();
 			UnitOscillator oscillator4 = new SquareOscillator();
 			oscillator4.noteOff();
+			UnitOscillator oscillator5 = new SquareOscillator();
+			oscillator5.noteOff();
+			UnitOscillator oscillator6 = new SquareOscillator();
+			oscillator6.noteOff();
+			UnitOscillator oscillator7 = new SquareOscillator();
+			oscillator7.noteOff();
+			UnitOscillator oscillator8 = new SquareOscillator();
+			oscillator8.noteOff();
 
 			Synthesizer synth = new MGSynth();
 			synth.add(oscillator1);
 			synth.add(oscillator2);
 			synth.add(oscillator3);
 			synth.add(oscillator4);
+			synth.add(oscillator5);
+			synth.add(oscillator6);
+			synth.add(oscillator7);
+			synth.add(oscillator8);
 			synth.add(lineOut = new LineOut());
 			oscillator1.output.connect(0, lineOut.input, 0);
 			oscillator1.output.connect(0, lineOut.input, 1);
@@ -43,15 +55,20 @@ public class SyntezatorApplication {
 			oscillator3.output.connect(0, lineOut.input, 1);
 			oscillator4.output.connect(0, lineOut.input, 0);
 			oscillator4.output.connect(0, lineOut.input, 1);
+			oscillator5.output.connect(0, lineOut.input, 0);
+			oscillator5.output.connect(0, lineOut.input, 1);
+			oscillator6.output.connect(0, lineOut.input, 0);
+			oscillator6.output.connect(0, lineOut.input, 1);
+			oscillator7.output.connect(0, lineOut.input, 0);
+			oscillator7.output.connect(0, lineOut.input, 1);
+			oscillator8.output.connect(0, lineOut.input, 0);
+			oscillator8.output.connect(0, lineOut.input, 1);
 
 			synth.getAudioDeviceManager().setSuggestedOutputLatency(0.02);
 
-			PolyphonyController poly = new PolyphonyController(4);
-			poly.setup(oscillator1, oscillator2, oscillator3, oscillator4);
+			PolyphonyController poly = new PolyphonyController(8);
+			poly.setup(oscillator1, oscillator2, oscillator3, oscillator4, oscillator5, oscillator6, oscillator7, oscillator8);
 
-			/*
-			//EnvelopeDAHDSR ADSR = new EnvelopeDAHDSR();
-			*/
 			synth.start();
 			lineOut.start();
 
